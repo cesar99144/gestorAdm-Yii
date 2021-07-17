@@ -1,7 +1,10 @@
 <?php
 
+use app\models\Categorias;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Produtos */
@@ -16,8 +19,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'preco')->textInput() ?>
 
-    <?= $form->field($model, 'idcategoria')->textInput() ?>
+    <?= $form->field($model, 'idcategoria')->dropDownList(ArrayHelper::map(Categorias::find()->all(), 'id', 'nome')) ?>
 
+    
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
